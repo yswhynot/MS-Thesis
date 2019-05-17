@@ -1,5 +1,29 @@
 \documentclass[../main.tex]{subfiles}
 
 \begin{document}
-This is related works.
+\section{Abstraction}
+Pursuit-evasion has received much attention 
+%been a popular research area
+for decades. Guibas~\cite{guibas1999visibility} formulated the problem in a way that the final goal is to ``see'' the evader and also provided a guarantee for capture in polygonal environments. 
+%In these settings, 
+For the goal in similar environments, some later work represented the environment as a graph. Isler et al.~\cite{isler2005roadmap} proposed building a roadmap for the environment so as to discretize the continuous space. However, this still results in a large state space because the roadmap does not compactly describe the environment thus produces a relatively large number of edges and vertices compared to the size of the environment.
+
+Hollinger et al.~\cite{hollinger2007probabilistic,hollinger2009efficient}
+proposed coupled and decoupled coordination strategies for multiple pursuers. The coupled coordination strategy includes a centralized planner that searches all possible paths on the graph. This strategy takes the future positions of other pursuers into account. The first robot plans on the original graph and the rest plan on the time-augmented graph which adds time as an additional variable.
+%in the state space. 
+For the decoupled coordination, each robot plans for itself, assuming others' paths  are fixed. They model the environment with convex hulls, then build a graph with vertices as the convex cells based on the discretization. However, their method models all the free space in the map by a set of non-overlapping convex hull so cannot capture the case where the pursuer is able to see multiple convex hulls from an overlapping region of those convex hulls. For example, at a corner connecting two corridors in different directions, the pursuer can see both corridors without moving to each of the convex hulls representing each corridor.
+%\cn{This sentence is not clearly written: 1) what does the the overlap mean? 2) why rooms do not make overlaps?}. 
+The position of the target/evader is maintained by a belief vector and its transition is based on a dispersion matrix, which is constructed according to the area of adjacent cells. The policy is computed by searching on the graph. However, since the framework aims to find the location of the target but does not catch the target physically, the target might evade and disappear from the sight of pursuers, which is not capable of modeling the target in our problem.
+%for this model handle.
+
+Many probabilistic search problems, which include moving targets or dynamic environment, can be formulated as Markov Decision Processes (MDPs). If the moving target is not always visible to the pursuer, it can be formulated as a Partially Observable Markov Decision Process (POMDP). An early work uses reinforcement learning with POMDP~\cite{arai2000experience} for multi-agent planning on a grid world. In that work, each agent learns its own policy with a credit assignment method. Hollinger~\cite{hollinger2009efficient} proposed to solve the multi-robot search problem with joint space of multiple pursuers in POMDP, but the state space grows exponentially as the number of pursuers increases. A recent work on abstract MDPs~\cite{gopalan2017planning} introduced abstraction to the state space for top-down policy search for MDP. However, the joint space of POMDPs is still intractably large.
+%computationally heavy. 
+Ong~\cite{ong2010planning} provided the idea of mixed observability, a special class of POMDPs. This approach separates the fully and partially observable components of the state and leads to a faster planning algorithm. Our work is motivated by
+%We utilize 
+both abstraction and mixed observation. We introduce a planning structure on top of these special structures of POMDPs.
+
+\section{Specification}
+Multi-robot systems can accomplish collaborative tasks with predefined control laws towards the goal region such as flocking strategy \cite{olfati2006flocking,zavlanos2007flocking} or from a sequence of behavior library \cite{nagavalli2017automated}. Such collaborative performance relies on communication between neighbors in the connectivity graph \cite{zavlanos2008distributed} to exchange robot states and information.
+
+Connectivity maintenance in multi-robot systems with predefined control laws has been extensively studied in the literature \cite{michael2009maintaining, zavlanos2008distributed, sabattini2013distributed}. Barrier certificate \cite{borrmann2015control} initially proposed to serve as avoiding collisions between robots, can also be used to formulate constraints on robots to keep connected within a limited range. To measure the connectivity of the communication graph, \cite{fiedler1973algebraic} stated the relationship between the second smallest eigenvalue of the Laplacian matrix of the graph. This is further discussed in detail in \cite{olfati2007consensus} which also stated the relationship between the convergence rate and stability of the robotics system. In \cite{olfati2007consensus, olfati2006flocking}, it is shown that the convergence rate of rendezvous and flocking is directly related to the second smallest eigenvalue of the Laplacian matrix, which is also determined directly by the degrees of the graph vertices, as well as other topological properties. 
 \end{document}
