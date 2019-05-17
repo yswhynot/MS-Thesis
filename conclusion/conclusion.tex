@@ -1,5 +1,18 @@
 \documentclass[../main.tex]{subfiles}
 
 \begin{document}
-This is conclusion.
+
+In this thesis, I proposed two approaches to handle scalability issues for multi-robot systems. Creating abstraction over state space in planning can save computation. Introducing connection robots in systems with a large number of robots could improve the overall performance.
+
+First, I presented a scalable algorithm for an indoor pursuit-evasion problem using multiple robotic pursuers. I proposed the Hybrid Hierarchical POMDP structure that utilizes the convex hulls of the environment to create abstract states. The algorithm could transit between the base MDP and the abstract POMDP so as to keep track of the target when it disappears during the capture event. We have shown that our algorithm is more scalable than a standard multi-agent POMDP solution and can capture the target within a reasonable time.
+
+The HHPOMDP approach is not limited only to the pursuit-evasion problem discussed in the paper. For other planning problems where an environment abstraction could be made at the lower level, having the hierarchical model would help with reducing computational complexity. The architecture could also be extended to scenarios when the planning tasks could be divided into groups and each group is independent of each other.
+
+Our idea can be extended in the future to consider limited communication. For our current settings, all the robots are fully connected, thus the belief space information is shared across all robots throughout all time stamps. However, in real-world applications, keeping all robots connected and exchanging information are both unsafe and limited owing to bandwidth restrictions. Therefore, an extension of limited communication, information sharing, and belief space updates will be essential to increase the applicability of this problem. Since our current method is fully centralized, a decentralized version of the algorithm might be needed for the limited communication setting. In addition, we only consider scenarios with one target. However, in many real-world scenarios such as search and rescue, there might be multiple moving targets. In this case, task allocation is needed and optimizing over multiple targets is challenging in larger state spaces. This would require more abstraction over both the environment and target locations.  
+
+Another limitation of the current structure is that HHPOMDP is solved by the forward exploration in the reachable belief space, which is not efficient with growing state space. A more efficient solver would be needed, possibly with heuristic or sampling in policy trees.
+
+In the second part, we considered the problem of controlling \textit{connection robot} to maintain flexible connectivity graph for the robots with an assigned controller to achieve their goal. We proposed the method of combining weighted rendezvous and weighted flocking for the connection robots to keep up with the task robots as well as providing flexibility for the task robots to reach their goal by correcting the topology of the current connectivity graph with a provably fast convergence rate, with a distributed fashion. Both theoretical analysis and experimental result are presented. Results have shown that our weighted behavior combination method outperforms all other methods in overall performance. Our algorithm is also scalable to a large number of robots in the system so that more complex tasks or behaviors could also be achieved.
+
+Both algorithms improve the scalability of the multi-robot systems by reducing computation complexity with abstract state space and controlling with specialization. These benefit the planning and control of multi-robot systems and enables more complicated applications for the system in various scenarios.
 \end{document}

@@ -116,12 +116,12 @@ For my parents
 %% into different files and input them into this file...
 
 \begin{abstract}
-Planning and controlling multi-robot systems is challenging during the dimensionality. When the number of the robots increases in the system, the complexity of computation grows exponentially. In this thesis, we examine the scalability problem in planning and control of multi-robot system. We propose two ideas to improve scalability of multi-robot systems: abstraction and specialization.
+Planning and controlling multi-robot systems is challenging due to the high dimensionality. When the number of robots increases in the system, the complexity of computation grows exponentially. In this thesis, we examine the scalability problem in planning and control of multi-robot system. We propose two ideas to improve the scalability of multi-robot systems: abstraction and specialization.
 
-For planning with abstraction, we propose a Hybrid Hierarchical Partially Observable Markov Decision Processes structure for improved scalability and efficiency in uncertain environment. We focus our application on the problem of pursuit-evasion with multiple pursuers and one evader in indoor environment. Since the evader might not be visible to the pursuers, incorporating uncertainty in planning would further increase computation complexity. Our structure consists of (i) the base MDPs for the cases where the evader is visible to the pursuers, (ii) the abstract POMDPs for the evader states that are not directly observable, and (iii) the transition states bridging between the base MDPs and abstract POMDPs.
+For planning with abstraction, we propose a Hybrid Hierarchical Partially Observable Markov Decision Processes structure for improved scalability and efficiency in an uncertain environment. We focus our application on the problem of pursuit-evasion with multiple pursuers and one evader in the indoor environment. Since the evader might not be visible to the pursuers, incorporating uncertainty in planning would further increase computation complexity. Our structure consists of (i) the base MDPs for the cases where the evader is visible to the pursuers, (ii) the abstract POMDPs for the evader states that are not directly observable, and (iii) the transition states bridging between the base MDPs and abstract POMDPs.
 This hybrid approach significantly reduces the number of states expanded in the policy tree to solve the problem by abstracting environment structures. Experimental results show that our method expands only 5\% of nodes generated from a standard POMDP solution and improve scalability.
 
-Specialization is important for systems with large number of robots, where each robot has an individual controller and collaboratively perform tasks. Connectivity maintenance is essential for these collaborative behaviors since robots need to communicate with neighbor robots to share states and information.
+Specialization is important for systems with a large number of robots, where each robot has an individual controller and collaboratively perform tasks. Connectivity maintenance is essential for these collaborative behaviors since robots need to communicate with neighbor robots to share states and information.
 It is inefficient for a robot to both attend to task behaviors and also maintain connectivity.
 Therefore, we introduce the idea of \textit{connection robots}. These robots do not have task behaviors assigned to them, but their goal is to maintain connectivity of the robot team by correcting the topology of the connectivity graph so as to provide flexibility for the task robots to perform task behaviors. We propose a distributed approach of blending weighted rendezvous and weighted flocking to form the controller for connection robots. We prove that this scheme is able to guarantee a faster convergence rate. We then present our result of a system of up to 30 robots in various cluttered environments and show that our approach is robust and scalable. 
 \end{abstract}
@@ -135,7 +135,7 @@ I thank my fellow labmates in for the stimulating discussions, for the sleepless
 
 I would also like to thank my boyfriend Gengshan Yang for getting me awesome food when I get depressed, and being a wonderful companion inside and outside academic studies.
 
-Last but not the least, I would like to thank my  parents for supporting me spiritually throughout my pursuit of academic career and my my life in general.
+Last but not least, I would like to thank my parents for supporting me spiritually throughout my pursuit of an academic career and my life in general.
 \end{acknowledgments}
 
 \tableofcontents
